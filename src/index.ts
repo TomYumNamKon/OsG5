@@ -1,5 +1,6 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
+import {serveStatic} from '@hono/node-server/serve-static'
 
 import * as fs from 'fs';
 import * as path from 'path';
@@ -28,9 +29,11 @@ function generateCode(): string {
 
 const app = new Hono()
 
-app.get('/', (c) => {
-  return c.text('File Sharing')
-})
+app.use('*', serveStatic({root: './public'}));
+
+// app.get('/', (c) => {
+//   return c.text('File Sharing')
+// })
 
 // app.get('/qr/:code', async (c) => {
 //   try {
