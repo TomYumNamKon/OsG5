@@ -11,8 +11,8 @@ import qrcode from 'qrcode';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const UPLOAD_DIR = path.join(__dirname, "uploads");
-// const FILE_EXPIRATION_TIME = 10 * 60 * 1000; // 10 mins in ms
-const FILE_EXPIRATION_TIME = 3 * 1000;
+const FILE_EXPIRATION_TIME = 10 * 60 * 1000; // 10 mins in ms
+// const FILE_EXPIRATION_TIME = 3 * 1000;
 
 if (!fs.existsSync(UPLOAD_DIR))
     fs.mkdirSync(UPLOAD_DIR, {recursive: true});
