@@ -29,7 +29,6 @@ function generateCode(): string {
 
 const app = new Hono()
 
-app.use('*', serveStatic({root: './public'}));
 
 // app.get('/', (c) => {
 //   return c.text('File Sharing')
@@ -98,6 +97,8 @@ app.get('/download/:code', (c) => {
   c.header('Content-Disposition', `attachment; filename=${metadata.originalfileName}`);
   return c.body(stream as any);
 })
+
+app.use('*', serveStatic({root: './public'}));
 
 serve({
   fetch: app.fetch,
