@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <title>CodeDrop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo"></div><div style="font-weight:700">CodeDrop</div>
+    </div>
+
+    <!-- Upload -->
+    <div class="card">
+      <div class="title">Send</div>
+      <div class="sendBox" id="sendBox">
+        <div class="plus">+</div>
+      </div>
+      <input id="fileInput" type="file" hidden>
+      <div class="muted">คลิกปุ่ม + เพื่อเลือกไฟล์แล้วแชร์รหัสให้ผู้รับ</div>
+    </div>
+
+    <!-- Share -->
+    <div class="card" id="shareCard" style="display:none">
+      <div class="title">Share</div>
+      <div class="bigcode" id="bigCode">000000</div>
+      <div class="recvRow" style="margin-top:10px">
+        <input class="key" id="shareUrl" readonly>
+        <button id="copyUrl">Copy</button>
+      </div>
+      <img id="qrShare" width="180" height="180" aria-label="QR">
+      <div class="muted" id="shareHint">ส่งเลข 6 หลัก หรือส่งลิงก์ให้ผู้รับได้ทันที</div>
+    </div>
+
+    <!-- Receive -->
+    <div class="card">
+      <div class="title">Receive</div>
+      <div class="recvRow">
+        <input class="key" id="key" placeholder="Input key (6 digits)" inputmode="numeric" maxlength="6">
+        <button id="btnDownload">⬇️</button>
+      </div>
+      <div class="muted">หรือสแกน QR จากผู้ส่ง</div>
+    </div>
+  </div>
+
+  <!-- ✅ ไฟล์สคริปต์หลัก -->
+  <script src="main.js"></script>
+</body>
+</html>
