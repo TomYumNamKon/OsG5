@@ -11,8 +11,10 @@ import qrcode from 'qrcode';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const UPLOAD_DIR = path.join(__dirname, "uploads");
-const FILE_EXPIRATION_TIME = 10 * 60 * 1000; // 10 mins in ms
-// const FILE_EXPIRATION_TIME = 3 * 1000;
+
+const EXPIRATION_MINS = 10
+
+const FILE_EXPIRATION_TIME = EXPIRATION_MINS * 60 * 1000; // 10 mins in ms
 
 if (!fs.existsSync(UPLOAD_DIR))
     fs.mkdirSync(UPLOAD_DIR, {recursive: true});
@@ -28,23 +30,6 @@ function generateCode(): string {
 }
 
 const app = new Hono()
-
-
-// app.get('/', (c) => {
-//   return c.text('File Sharing')
-// })
-
-// app.get('/qr/:code', async (c) => {
-//   try {
-//     const {code} = c.req.param();
-
-//     if (!files.has(code)) return c.json({error: 'Invalid code'}, 404);
-
-//   } catch (err) {
-//     console.error('Failed to generate QR code', err);
-//     return c.json({ error: 'Failed to generate QR code'}, 500);
-//   }
-// })
 
 app.post('/upload', async (c) => {
   try {
